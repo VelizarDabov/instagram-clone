@@ -1,3 +1,4 @@
+import Feed from "@/components/Feed";
 import Header from "@/components/Header";
 
 
@@ -6,7 +7,7 @@ export default function Home() {
     <main className="">
      {/* Header */}
      <Header />
-     {/* Feed */}
+   <Feed />
      {/* Footer */}
     </main>
   )

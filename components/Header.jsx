@@ -11,7 +11,7 @@ import {
 import { HomeIcon } from "@heroicons/react/solid";
 const Header = () => {
   return (
-    <div className="">
+    <div className=" shadow-sm border-b bg-white sticky top-0 z-50">
       <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
         {/* left */}
         <div className="relative hidden lg:inline-grid w-24 cursor-pointer">
@@ -42,8 +42,7 @@ const Header = () => {
           </div>
         </div>
 
-        {/* 
-    right */}
+        {/* right */}
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon className="navBtn" />
           <MenuIcon className="h-6 md:hidden cursor-pointer" />

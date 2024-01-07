@@ -2,6 +2,7 @@ import React from "react";
 import Stories from "./Stories";
 import Posts from "./Posts";
 import MiniProfile from "./MiniProfile";
+import Suggestions from "./Suggestions";
 
 const Feed = () => {
   return (
@@ -15,10 +16,14 @@ const Feed = () => {
       </section>
 
       {/* section */}
-      <section>
-        {/* mini profite */}
-        <MiniProfile />
+      <section className="hidden xl:inline-grid md:col-span-1">
+        <div className="fixed ">
+ {/* mini profite */}
+ <MiniProfile />
         {/* suggestions */}
+        <Suggestions />
+        </div>
+       
       </section>
     </div>
   );

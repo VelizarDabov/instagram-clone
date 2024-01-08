@@ -10,11 +10,11 @@ const Suggestions = () => {
           return {
             userId: faker.string.uuid(),
             username: faker.internet.userName(),
-            email: faker.internet.email(),
+            // email: faker.internet.email(),
             avatar: faker.image.avatar(),
-            password: faker.internet.password(),
-            birthdate: faker.date.birthdate(),
-            registeredAt: faker.date.past(),
+            // password: faker.internet.password(),
+            // birthdate: faker.date.birthdate(),
+            // registeredAt: faker.date.past(),
             companyname: faker.company.name(),
           };
         };

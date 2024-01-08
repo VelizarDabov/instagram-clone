@@ -9,13 +9,23 @@ import {
   MenuIcon,
 } from "@heroicons/react/outline";
 import { HomeIcon } from "@heroicons/react/solid";
+import { auth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/navigation";
+import { useRecoilState } from "recoil";
+import { modalState } from "@/atoms/modalAtoms";
 const Header = () => {
+  const [user] = useAuthState(auth);
+ const router= useRouter();
+ const [open, setOpen] = useRecoilState(modalState)
+
   return (
     <div className=" shadow-sm border-b bg-white sticky top-0 z-50">
       <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
         {/* left */}
         <div className="relative hidden lg:inline-grid w-24 cursor-pointer">
           <Image
+          onClick={() => router.push('/')}
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2880px-Instagram_logo.svg.png "
             layout="fill"
             objectFit="contain"
@@ -23,6 +33,7 @@ const Header = () => {
         </div>
         <div className="relative w-10  lg:hidden flex-shrink-0 cursor-pointer">
           <Image
+            onClick={() => router.push('/')}
             src="https://1000logos.net/wp-content/uploads/2017/02/insta-logo.png"
             layout="fill"
             objectFit="contain"
@@ -44,7 +55,7 @@ const Header = () => {
 
         {/* right */}
         <div className="flex items-center justify-end space-x-4">
-          <HomeIcon className="navBtn" />
+          <HomeIcon   onClick={() => router.push('/')} className="navBtn" />
           <MenuIcon className="h-6 md:hidden cursor-pointer" />
 
           <div className="relative navBtn">
@@ -54,12 +65,13 @@ const Header = () => {
             </div>
           </div>
 
-          <PlusCircleIcon className="navBtn" />
+          <PlusCircleIcon onClick={() => setOpen(true)} className="navBtn" />
           <UserGroupIcon className="navBtn" />
           <HeartIcon className="navBtn" />
 
           <img
-            src="https://scontent.fsof9-1.fna.fbcdn.net/v/t39.30808-6/348610572_3128974100580964_386632649417346818_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=ZjyTxxQWzlIAX_2bRzE&_nc_ht=scontent.fsof9-1.fna&oh=00_AfAdhAGh0mqH5ZptsnS7n-zP1cAWhEgvWrBZ_znlR4IcaA&oe=659EBAE7"
+          onClick={()=> auth.signOut()}
+            src={user.photoURL}
             alt="profile pic"
             className="h-10 rounded-full cursor-pointer"
           />
